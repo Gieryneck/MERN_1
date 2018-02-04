@@ -108,18 +108,6 @@ export function thumbPostRequest(cuid, voteCount) {
             post: {
                 voteCount: voteCount,
             },
-        }).then(() => dispatch(thumbPost(cuid, voteCount)));/* .then(console.log(res)) *///.then(res => dispatch(thumbPost(cuid, res.post.voteCount)));
+        }).then(() => dispatch(thumbPost(cuid, voteCount)));
     };
 }
-/* 
-export function addPostRequest(post) {
-    return (dispatch) => {
-        return callApi('posts', 'post', {
-            post: {
-                name: post.name,
-                title: post.title,
-                content: post.content,
-            },
-        }).then(res => dispatch(addPost(res.post)));
-    };
-} */

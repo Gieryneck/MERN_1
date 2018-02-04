@@ -27,7 +27,7 @@ class PostListPage extends Component {
 
   handleThumbUpPost = (cuid, voteCount) => {
 
-    console.log(cuid);
+    //console.log(voteCount);
     this.props.dispatch(thumbPostRequest(cuid, voteCount+1));
 
   };
