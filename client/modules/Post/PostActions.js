@@ -5,7 +5,7 @@ export const ADD_POST = 'ADD_POST';
 export const ADD_POSTS = 'ADD_POSTS';
 export const DELETE_POST = 'DELETE_POST';
 export const EDIT_POST = 'EDIT_POST';
-export const THUMB_UP_POST = 'THUMB_UP_POST';
+export const THUMB_POST = 'THUMB_POST';
 
 
 // Export Actions
@@ -93,24 +93,22 @@ export function deletePostRequest(cuid) {
 
 
 
-export function thumbUpPost(cuid, voteCount) {
+export function thumbPost(cuid, voteCount) {
     return {
-        type: THUMB_UP_POST,
+        type: THUMB_POST,
         cuid,
         voteCount,
     };
 }
 
-export function thumbUpPostRequest(cuid) {
+export function thumbPostRequest(cuid, voteCount) {
 
     return (dispatch) => {
         return callApi(`posts/${cuid}`, 'put', {
             post: {
-
-                voteCount: 'jake',
-
+                voteCount: voteCount,
             },
-        })/* .then(console.log(res)) */.then(res => dispatch(thumbUpPost(cuid, res.post.voteCount)));
+        }).then(() => dispatch(thumbPost(cuid, voteCount)));/* .then(console.log(res)) *///.then(res => dispatch(thumbPost(cuid, res.post.voteCount)));
     };
 }
 /* 
