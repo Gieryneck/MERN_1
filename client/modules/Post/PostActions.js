@@ -5,6 +5,8 @@ export const ADD_POST = 'ADD_POST';
 export const ADD_POSTS = 'ADD_POSTS';
 export const DELETE_POST = 'DELETE_POST';
 export const EDIT_POST = 'EDIT_POST';
+export const THUMB_UP_POST = 'THUMB_UP_POST';
+
 
 // Export Actions
 
@@ -76,6 +78,7 @@ export function fetchPost(cuid) {
 }
 
 export function deletePost(cuid) {
+
     return {
         type: DELETE_POST,
         cuid,
@@ -87,3 +90,38 @@ export function deletePostRequest(cuid) {
         return callApi(`posts/${cuid}`, 'delete').then(() => dispatch(deletePost(cuid)));
     };
 }
+
+
+
+export function thumbUpPost(cuid, voteCount) {
+    return {
+        type: THUMB_UP_POST,
+        cuid,
+        voteCount,
+    };
+}
+
+export function thumbUpPostRequest(cuid) {
+
+    return (dispatch) => {
+        return callApi(`posts/${cuid}`, 'put', {
+            post: {
+
+                voteCount: 'jake',
+
+            },
+        })/* .then(console.log(res)) */.then(res => dispatch(thumbUpPost(cuid, res.post.voteCount)));
+    };
+}
+/* 
+export function addPostRequest(post) {
+    return (dispatch) => {
+        return callApi('posts', 'post', {
+            post: {
+                name: post.name,
+                title: post.title,
+                content: post.content,
+            },
+        }).then(res => dispatch(addPost(res.post)));
+    };
+} */

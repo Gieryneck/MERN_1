@@ -17,7 +17,7 @@ export function configureStore(initialState = {}) {
     enhancers.push(window.devToolsExtension ? window.devToolsExtension() : DevTools.instrument());
   }
 
-  const store = createStore(rootReducer, initialState, compose(...enhancers));
+  const store = createStore(rootReducer, initialState, compose(...enhancers)); // rootReducer == combineReducers
 
   // For hot reloading reducers
   if (module.hot) {

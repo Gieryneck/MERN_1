@@ -6,6 +6,7 @@ export default {
     switchLanguage: 'Changer de langue',
     twitterMessage: 'Nous sommes sur Twitter',
     editPost: 'Edit Post',
+    thumbUpPost: 'Thumb Up Post',
     by: 'Par',
     deletePost: 'Supprimer le message',
     createNewPost: 'Créer un nouveau message',

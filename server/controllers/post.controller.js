@@ -71,6 +71,18 @@ export function editPost(req, res) {
     });
   }
   
+
+export function thumbUpPost(req, res) {
+   
+    Post.update({ cuid: req.params.cuid }, req.body.post.voteCount).exec((err, voteCount) => {
+      if (err) {
+        res.status(500).send(err);
+      }
+      res.json({ voteCount });
+    });
+}
+
+
 /**
  
  * Delete a post

@@ -2,13 +2,12 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { getShowEditPost } from '../../../App/AppReducer';
-import { fetchPost, editPostRequest } from '../../PostActions';
+import { fetchPost, editPostRequest, thumbUpPostRequest } from '../../PostActions';
 import { toggleEditPost } from '../../../App/AppActions';
 import { injectIntl, FormattedMessage } from 'react-intl';
+
 // Import Style
 import styles from '../../components/PostListItem/PostListItem.css';
-
-// Import Actions
 
 
 // Import Selectors
@@ -22,6 +21,7 @@ export class PostDetailPage extends React.Component {
             name: this.props.post.name,
             title: this.props.post.title,
             content: this.props.post.content,
+            voteCount: this.props.post.voteCount,
         };
     }
 
@@ -87,6 +87,7 @@ function mapDispatchToProps(dispatch, props) {
     return {
         toggleEditPost: () => dispatch(toggleEditPost()),
         editPostRequest: (post) => dispatch(editPostRequest(props.params.cuid, post)),
+        thumbUpPostRequest: (cuid) => dispatch(thumbUpPostRequest(cuid)),
     };
 } 
 
